@@ -21,12 +21,13 @@ const KeywordPage = () => {
   const [selectedKeywords, setSelectedKeywords] = useState([]);  // New state for selected keywords
   const [filename, setFilename] = useState('LEC04.pdf');
 
-  useEffect(() => {
-    if (location.state) {
-      setKeywords(location.state.keywords);  // Retrieve the keywords
-      setFilename(location.state.filename);  // Retrieve the filename
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.state) {
+  //     console.log(location.state.keywords)
+  //     setKeywords(location.state.keywords);  // Retrieve the keywords
+  //     setFilename(location.state.filename);  // Retrieve the filename
+  //   }
+  // }, [location]);
 
   const getFileFromS3 = async (bucket, key) => {
     const params = {
@@ -97,7 +98,7 @@ const KeywordPage = () => {
         <Header />
         <div className="answer_key_box w-6/12 min-h-[450px] rounded-xl flex justify-center items-center">
           <div className="grid grid-cols-2 gap-2 mt-4 mb-42">
-            {keywords.slice(0, 12).map((keyword, index) => (
+            {keywords.map((keyword, index) => (
                 <KeywordBox
                   key={index}
                   keyword={keyword}
